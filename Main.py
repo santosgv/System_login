@@ -1,17 +1,11 @@
-
+from Check_list.db import checklogin
 from tkinter import *
 
 root=Tk()
 
 class Validadores():
     def validar(self):
-        login=self.entlog.get()
-        senha=self.entpwd.get()
-        self.db()
-        return print(login,senha)
-
-    def db(self):
-        return print('Acessando banco')
+        return checklogin(self.entlog.get(),self.entpwd.get())
 class Aplicacao(Validadores):
     def __init__(self):
         self.root=root
@@ -41,4 +35,6 @@ class Aplicacao(Validadores):
         self.btlog=Button(self.main,text='Logar',command=self.validar)
         self.btlog.place(relx=0.3,rely=0.60)
 
+        self.lbtext=Label(self.main,text='Status')
+        self.lbtext.place(relx=0.3,rely=0.80)
 Aplicacao()
