@@ -3,10 +3,15 @@ from tkinter import *
 
 root=Tk()
 
-class Validadores():
+class Funcoes():
     def validar(self):
-        return checklogin(self.entlog.get(),self.entpwd.get())
-class Aplicacao(Validadores):
+        status=checklogin(self.entlog.get(),self.entpwd.get())
+        if status ==True:
+            self.lbtext['text'] = ('Login aceito')
+        elif status ==False:
+            self.lbtext['text'] = ('Usuario ou senha incorreto')
+
+class Aplicacao(Funcoes):
     def __init__(self):
         self.root=root
         self.Tela()
@@ -35,6 +40,6 @@ class Aplicacao(Validadores):
         self.btlog=Button(self.main,text='Logar',command=self.validar)
         self.btlog.place(relx=0.3,rely=0.60)
 
-        self.lbtext=Label(self.main,text='Status')
-        self.lbtext.place(relx=0.3,rely=0.80)
+        self.lbtext=Label(self.main,text='Status',bg='white')
+        self.lbtext.place(relx=0.2,rely=0.80)
 Aplicacao()
