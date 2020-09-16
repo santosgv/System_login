@@ -34,7 +34,7 @@ class Aplicacao(Funcoes):
 
         self.lbpwd=Label(self.main,bg='white',text='Senha')
         self.lbpwd.place(relx=0.05,rely=0.45)
-        self.entpwd=Entry(self.main)
+        self.entpwd=Entry(self.main, show="*")
         self.entpwd.place(relx=0.20,rely=0.45,width=150)
 
         self.btlog=Button(self.main,text='Logar',command=self.validar)
