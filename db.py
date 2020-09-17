@@ -14,4 +14,7 @@ def checklogin(login,passwoard):
     elif len(status)==0:
         status=False
 
+    elif len(status) !=(0,1):
+        status='Foi encontrado mas de um resultado para o usuario'
+
     return status
