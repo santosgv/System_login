@@ -1,4 +1,4 @@
-from Check_list.db import checklogin
+from Check_list.db import checklogin,creatlogin
 from tkinter import *
 
 root=Tk()
@@ -15,6 +15,9 @@ class Funcoes():
         else:
             self.lbtext['text'] = (status)
             self.lbtext.place(relx=0.01, rely=0.80)
+    def Criar(self):
+        creatlogin()
+
 class Aplicacao(Funcoes):
     def __init__(self):
         self.root=root
@@ -58,7 +61,7 @@ class Aplicacao(Funcoes):
         Label(nwwindow, text='Password',bg='white').place(relx=0.01, rely=0.40)
         login=Entry(nwwindow).place(relx=0.25,rely=0.20)
         pasword=Entry(nwwindow).place(relx=0.25, rely=0.40)
-        Button(nwwindow,text='Creat').place(relx=0.4,rely=0.70)
+        Button(nwwindow,text='Creat',command=self.Criar).place(relx=0.4,rely=0.70)
 
 
 Aplicacao()
