@@ -7,10 +7,14 @@ class Funcoes():
     def validar(self):
         status=checklogin(self.entlog.get(),self.entpwd.get())
         if status ==True:
-            self.lbtext['text'] = ('Login aceito')
+            self.lbtext['text'] = ('Login acept')
+            self.lbtext.place(relx=0.2, rely=0.80)
         elif status ==False:
-            self.lbtext['text'] = ('Usuario ou senha incorreto')
-
+            self.lbtext['text'] = ('Login or password incorrect')
+            self.lbtext.place(relx=0.1, rely=0.80)
+        else:
+            self.lbtext['text'] = (status)
+            self.lbtext.place(relx=0.01, rely=0.80)
 class Aplicacao(Funcoes):
     def __init__(self):
         self.root=root
