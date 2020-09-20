@@ -1,13 +1,16 @@
-from mysql.connector import (connection)
-mydb = connection.MySQLConnection(host='127.0.0.1', user='root', password='Senha123@', database='Fist_db')
-mycursor=mydb.cursor()
+import pyodbc
 
+server = 'localhost'
+database = 'MasterDB'
+string_conexao = 'Driver={SQL Server Native CLient 11.0};Server=' + server + ';Database=' + database + ';Trusted_Connection=yes;'
+c = pyodbc.connect(string_conexao)
+cur=c.cursor()
 
 def checklogin(login,password):
-    mycursor.execute(f'''
-        select * from Login where user=('{login}') and password=('{password}')
+    cur.execute(f'''
+        select * from Login where Login=('{login}') and Password=('{password}')
         ''')
-    status = mycursor.fetchall()
+    status = cur.fetchall()
     if len(status)==1:
         status=True
 
@@ -18,5 +21,17 @@ def checklogin(login,password):
         status='Foi encontrado mas de um resultado para o usuario'
 
     return status
-def creatlogin():
-    return print('deu certo')
+
+def creatlogin(acconunt,passowrd):
+    cur.execute(f'''
+    select * from Login where Login=('{acconunt}') and Password=('{passowrd}')
+    ''')
+    valida=cur.fetchall()
+    if len(valida)==0:
+        cur.execute(f'''
+        insert into Login (Login,Password) values('{acconunt}','{passowrd}')
+        ''')
+        cur.commit()
+        return ('Conta Criada com sucesso')
+    elif valida !=0:
+        return ('Conta ja em uso')

@@ -1,4 +1,4 @@
-from Check_list.db import checklogin,creatlogin
+from db import checklogin,creatlogin
 from tkinter import *
 
 root=Tk()
@@ -15,8 +15,17 @@ class Funcoes():
         else:
             self.lbtext['text'] = (status)
             self.lbtext.place(relx=0.01, rely=0.80)
+
     def Criar(self):
-        creatlogin()
+        situacao=creatlogin(self.login.get(),self.password.get())
+        if situacao ==('Conta Criada com sucesso'):
+            self.login.delete(0,END)
+            self.password.delete(0,END)
+            self.lbstatus['text']=('Conta Criada com sucesso')
+            self.btcreat.destroy()
+
+        if situacao ==('Conta ja em uso'):
+            self.lbstatus['text']=('Conta ja em uso')
 
 class Aplicacao(Funcoes):
     def __init__(self):
@@ -59,9 +68,13 @@ class Aplicacao(Funcoes):
         nwwindow.resizable(False,False)
         Label(nwwindow,text='Login',bg='white').place(relx=0.01,rely=0.20)
         Label(nwwindow, text='Password',bg='white').place(relx=0.01, rely=0.40)
-        login=Entry(nwwindow).place(relx=0.25,rely=0.20)
-        pasword=Entry(nwwindow).place(relx=0.25, rely=0.40)
-        Button(nwwindow,text='Creat',command=self.Criar).place(relx=0.4,rely=0.70)
-
+        self.lbstatus=Label(nwwindow, text='status',bg='white')
+        self.lbstatus.place(relx=0.01, rely=0.70)
+        self.login=Entry(nwwindow)
+        self.login.place(relx=0.25,rely=0.20)
+        self.password=Entry(nwwindow,show="*")
+        self.password.place(relx=0.25, rely=0.40)
+        self.btcreat=Button(nwwindow,text='Creat',command=self.Criar)
+        self.btcreat.place(relx=0.4,rely=0.70)
 
 Aplicacao()
