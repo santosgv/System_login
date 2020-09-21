@@ -8,7 +8,7 @@ cur=c.cursor()
 
 def checklogin(login,password):
     cur.execute(f'''
-        select * from Login where Login=('{login}') and Password=('{password}')
+        select * from Login where Login=('{login}') and Password=('{password}') and (situacao=1)
         ''')
     status = cur.fetchall()
     if len(status)==1:
@@ -24,14 +24,15 @@ def checklogin(login,password):
 
 def creatlogin(acconunt,passowrd):
     cur.execute(f'''
-    select * from Login where Login=('{acconunt}') and Password=('{passowrd}')
+    select * from login where Login=('{acconunt}') and Password=('{passowrd}') and situacao=1
     ''')
     valida=cur.fetchall()
     if len(valida)==0:
         cur.execute(f'''
-        insert into Login (Login,Password) values('{acconunt}','{passowrd}')
+        insert into login (Login,Password,situacao) values('{acconunt}','{passowrd}',1)
         ''')
         cur.commit()
         return ('Conta Criada com sucesso')
     elif valida !=0:
         return ('Conta ja em uso')
+

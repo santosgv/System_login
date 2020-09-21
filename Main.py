@@ -74,7 +74,7 @@ class Aplicacao(Funcoes):
         self.login.place(relx=0.25,rely=0.20)
         self.password=Entry(nwwindow,show="*")
         self.password.place(relx=0.25, rely=0.40)
-        self.btcreat=Button(nwwindow,text='Creat',command=self.Criar)
+        self.btcreat=Button(nwwindow,text='Criar',command=self.Criar)
         self.btcreat.place(relx=0.4,rely=0.70)
 
 Aplicacao()
