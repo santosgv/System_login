@@ -27,5 +27,5 @@ create database [login]
     [Password]varchar(20),
     [situacion]bit defalt 0
     
- );
+
 );
