@@ -19,9 +19,11 @@ both the database and the table can be changed to the name you want, just adjust
 
 ### Script create table "login"
 
-create database [login](
+create database [login]
+(
     [userID] primary key idantity not null,
     [Login] varchar(20),
     [Password]varchar(20),
     [situacion]bit defalt 0
+ );
 );
