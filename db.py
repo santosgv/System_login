@@ -1,7 +1,7 @@
 import pyodbc
 
-server = 'localhost'
-database = 'MasterDB'
+server = 'DESKTOP-BNVC5K2\SQLEXPRESS'
+database = 'barbearia'
 string_conexao = 'Driver={SQL Server Native CLient 11.0};Server=' + server + ';Database=' + database + ';Trusted_Connection=yes;'
 c = pyodbc.connect(string_conexao)
 cur=c.cursor()
