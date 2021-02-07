@@ -30,7 +30,7 @@ class Funcoes():
 class Aplicacao(Funcoes):
     def __init__(self):
         self.root=root
-        self.root.iconbitmap('C:/Users/Vitor/source/repos/santosgv/System_login/icon.ico')
+       # self.root.iconbitmap('C:/Users/Vitor/source/repos/santosgv/System_login/icon.ico')
         self.Tela()
         self.Frame()
         self.labelAndBotton()
